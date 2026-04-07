@@ -1,14 +1,40 @@
-<div class="login-container">
+<div class="container">
+
   <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" formControlName="username" required>
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password" required>
-    </div>
-    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+    <!-- 👇 IMPORTANTE: dentro del form -->
+    <input 
+      type="text"
+      formControlName="username"
+      placeholder="Usuario"
+    >
+
+    <input 
+      type="password"
+      formControlName="password"
+      placeholder="Contraseña"
+    >
+
+    <label>
+      <input type="checkbox" formControlName="remember">
+      Recordarme
+    </label>
+
+    <button type="submit" [disabled]="loading()">
+  <span *ngIf="!loading()">Ingresar</span>
+  <div *ngIf="loading()" class="loader"></div>
+</button>
+
   </form>
+
+  <div *ngIf="error()">{{ error() }}</div>
+
+  <button type="button" (click)="openReset()">
+    Olvidé mi contraseña
+  </button>
+
 </div>
+
+<app-reset-password *ngIf="showReset()"></app-reset-password>

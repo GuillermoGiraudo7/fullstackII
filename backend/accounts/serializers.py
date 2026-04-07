@@ -9,22 +9,22 @@ class UserSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
 
     def create(self, validated_data):
-        user = User.objects.create_user(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            password=validated_data['password']
-        )
-        return user
+        return User.objects.create_user(**validated_data)
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+# OTP / Reset
+class RequestOtpSerializer(serializers.Serializer):
+    username = serializers.CharField()
 
-    class Meta:
-        model = UserProfile
-        fields = ['user', 'encrypted_info']
+class VerifyOtpSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    otp_code = serializers.CharField()
+
+class ResetPasswordSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    otp_code = serializers.CharField()
+    new_password = serializers.CharField(write_only=True)

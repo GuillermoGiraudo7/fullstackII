@@ -1,1 +1,131 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cinzel', serif;
+
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+    url('https://picfiles.alphacoders.com/522/thumb-1920-522909.jpg');
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* 🔥 ANIMACIÓN GLOBAL */
+.container {
+  width: 350px;
+  padding: 30px;
+
+  background: rgba(15, 15, 15, 0.95);
+  border: 3px solid #c9a34e;
+  border-radius: 12px;
+
+  box-shadow: 0 0 30px black;
+
+  text-align: center;
+  color: #f5e6c8;
+
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ✨ Fade */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1, h2, h3 {
+  color: #d4af37;
+  text-shadow: 2px 2px 8px black;
+}
+
+/* 🧱 INPUTS */
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+
+  background: #1e1e1e;
+  border: 2px solid #8b6f2f;
+  border-radius: 5px;
+  color: #fff;
+
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 8px #d4af37;
+  outline: none;
+}
+
+/* 🪨 BOTONES ESTILO AOE */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background: linear-gradient(#7a5c1f, #d4af37);
+  border: 2px solid #5a4315;
+  border-radius: 6px;
+
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(#d4af37, #ffd700);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #d4af37;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ❌ ERROR */
+.error {
+  color: #ff4d4d;
+  margin-top: 10px;
+}
+
+/* ✅ SUCCESS */
+.success {
+  color: #00cc66;
+  margin-top: 10px;
+}
+
+/* ⏳ LOADER */
+.loader {
+  border: 4px solid #333;
+  border-top: 4px solid #d4af37;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin: 15px auto;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
